@@ -5,7 +5,6 @@
     <title>tests</title>
     <meta charset="utf-8">
     <script src="//cdn.jsdelivr.net/npm/phaser@3.2.1/dist/phaser.js"></script>
-    <script src="phaser/phaser.min.js"></script>
 </head>
 <body>
     
@@ -36,12 +35,22 @@
 
         var player;
         var playerSpeed = 250;
+        var playerBullets;
+        var playerBulletSpeed = 400;
+        var playerFireRate = 5;
+        var bulletTimer = 0;
+        var playerBulletYOffset = 20;
+
         var cursors;
+
+        var noKeys;
+        var keySpaceBar;
 
         // Preload
         function preload () 
         {
             this.load.image('stars', 'assets/backgrounds/starsbg.png');
+            this.load.image('player_bullet', 'assets/sprites/vf1/player_bullet.png');
             this.load.spritesheet('vf1_sp', 'assets/sprites/vf1/vf1_sp.png', { frameWidth: 32, frameHeight: 37});
             this.load.spritesheet('vf1_turn_l', 'assets/sprites/vf1/vf1_turn_l.png', { frameWidth: 32, frameHeight: 37});
             this.load.spritesheet('vf1_turn_r', 'assets/sprites/vf1/vf1_turn_r.png', { frameWidth: 32, frameHeight: 37});
@@ -49,12 +58,19 @@
         
         function create () 
         {
+            keySpaceBar = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.SPACE);
+
             // Background
             this.add.image(400, 300, 'stars');
 
             // Player inits
             player = this.physics.add.sprite(100, 450, 'vf1_sp');
             player.setCollideWorldBounds(true);
+
+            playerBullets = this.physics.add.group({
+                key: 'player_bullet',
+                setXY: { x: 2, y: 2, stepY: 2 }
+            });
 
             // Player animations
             this.anims.create({
@@ -84,21 +100,40 @@
 
         function update () 
         {
+            if (!cursors.left.isDown && !cursors.right.isDown && !cursors.down.isDown && !cursors.up.isDown) 
+            {
+                noKeys = true;
+            }
+
+            if (noKeys) 
+            {
+                player.setVelocityX(0);
+                player.setVelocityY(0);
+                player.anims.play('thrusters', true);
+            }
+            
+            // Player shooting
+            if (keySpaceBar.isDown && bulletTimer <= 0)
+            {
+                playerBullets.create(player.x, player.y - playerBulletYOffset, 'player_bullet');
+                playerBullets.setVelocityY(-playerBulletSpeed - playerSpeed);
+                bulletTimer = playerFireRate;
+            }
+            else 
+            {
+                bulletTimer--;
+            }
+
             // Player movement by keyboard input
             if (cursors.left.isDown)
             {
                 player.setVelocityX(-playerSpeed);
                 player.anims.play('turn_l', true);
             }
-            else if (cursors.right.isDown)
+            if (cursors.right.isDown)
             {
                 player.setVelocityX(playerSpeed);
                 player.anims.play('turn_r', true);
-            }
-            else 
-            {
-                player.setVelocityX(0);
-                player.anims.play('thrusters', true);
             }
 
             if (cursors.up.isDown) 
@@ -109,17 +144,13 @@
                     player.anims.play('thrusters', true);
                 }
             }
-            else if (cursors.down.isDown) 
+            if (cursors.down.isDown) 
             {
                 player.setVelocityY(playerSpeed);
                 if (!cursors.left.isDown && !cursors.right.isDown) 
                 {
                     player.anims.play('thrusters', true);
                 }
-            }
-            else 
-            {
-                player.setVelocityY(0);
             }
         }
 
