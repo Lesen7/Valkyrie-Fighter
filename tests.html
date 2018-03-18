@@ -1,0 +1,105 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta name="tests" content="test scene" />
+    <title>tests</title>
+    <meta charset="utf-8">
+    <script src="//cdn.jsdelivr.net/npm/phaser@3.2.1/dist/phaser.js"></script>
+    <script src="phaser/phaser.min.js"></script>
+</head>
+<body>
+    
+    <div id="game"></div>
+
+   
+    <script type="text/javascript">
+        // Game code starts here
+
+        var config = {
+            type: Phaser.AUTO,
+            width: 600,
+            height: 800,
+            physics: {
+                default: 'arcade',
+                arcade: {
+                    gravity: { y: 0 },
+                    debug: false
+                }
+            },
+            scene: {
+                preload: preload,
+                create: create,
+                update: update
+            }
+        };
+        
+        var game = new Phaser.Game(config);
+
+        var player;
+        var playerSpeed = 250;
+        var cursors;
+
+        function preload () 
+        {
+            this.load.image('stars', 'assets/backgrounds/starsbg.png');
+            this.load.spritesheet('vf1', 'assets/sprites/vf1/vf1_sp.png', { frameWidth: 32, frameHeight: 37});
+        }
+        
+        function create () 
+        {
+            // Background
+            this.add.image(400, 300, 'stars');
+
+            // Player inits
+            player = this.physics.add.sprite(100, 450, 'vf1');
+            player.setCollideWorldBounds(true);
+
+            // Player animations
+            this.anims.create({
+                key: 'thrusters',
+                frames: this.anims.generateFrameNumbers('vf1', { start: 0, end: 1 }),
+                frameRate: 10,
+                repeat: -1
+            });
+
+            // Keyboard input listener
+            cursors = this.input.keyboard.createCursorKeys();
+        }
+
+        function update () 
+        {
+            // Always perform thrusters animation
+            player.anims.play('thrusters', true);
+            
+            // Player movement by keyboard input
+            if (cursors.left.isDown)
+            {
+                player.setVelocityX(-playerSpeed);
+            }
+            else if (cursors.right.isDown)
+            {
+                player.setVelocityX(playerSpeed);
+            }
+            else 
+            {
+                player.setVelocityX(0);
+            }
+
+            if (cursors.up.isDown) 
+            {
+                player.setVelocityY(-playerSpeed);
+            }
+            else if (cursors.down.isDown) 
+            {
+                player.setVelocityY(playerSpeed);
+            }
+            else 
+            {
+                player.setVelocityY(0);
+            }
+        }
+
+    </script>
+    
+</body>
+</html>
