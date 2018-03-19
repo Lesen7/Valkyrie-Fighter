@@ -17,6 +17,7 @@
             type: Phaser.AUTO,
             width: 600,
             height: 800,
+            pixelArt: true,
             physics: {
                 default: 'arcade',
                 arcade: {
@@ -28,7 +29,8 @@
                 preload: preload,
                 create: create,
                 update: update
-            }
+            },
+            fps: 120
         };
         
         // Game variables
