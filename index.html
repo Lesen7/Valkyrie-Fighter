@@ -31,6 +31,11 @@
         };
         
         var game = new Phaser.Game(config);
+        var gameLevel;
+        var gameSpeed;
+
+        var background;
+        var scrollSpeed = 3;
 
         var player;
         var playerSpeed = 250;
@@ -43,13 +48,12 @@
         var cursors;
 
         var noKeys;
-        var keySpaceBar;
+        var keyShoot;
         var keyLeft;
         var keyRight;
         var keyUp;
         var keyDown;
 
-        // Preload
         function preload () 
         {
             this.load.image('stars_bg', 'assets/backgrounds/stars_bg.png')
@@ -61,25 +65,21 @@
         
         function create () 
         {
-            console.log('Thanks for the WASD fix <3');
             // Keycode definitions
-            keySpaceBar = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.SPACE);
+            keyShoot = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.SPACE);
             keyLeft = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.A);
             keyRight = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.D);
             keyUp = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.W);
             keyDown = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.S);
 
-            // Background
-            this.add.image(300, 400, 'stars_bg');
+            // Background definition
+            background = this.add.tileSprite(300, 400, 600, 800, 'stars_bg');
 
             // Player inits
             player = this.physics.add.sprite(100, 450, 'vf1_sp');
             player.setCollideWorldBounds(true);
 
-            playerBullets = this.physics.add.group({
-                key: 'player_bullet',
-                setXY: { x: 2, y: 2, stepY: 2 }
-            });
+            playerBullets = this.physics.add.group();
 
             // Player animations
             this.anims.create({
@@ -109,19 +109,30 @@
 
         function update () 
         {   
+            // Scroll background
+            background.tilePositionY -= scrollSpeed;
+
             // Player shooting
-            if (keySpaceBar.isDown && bulletTimer <= 0)
+            if (keyShoot.isDown && bulletTimer <= 0)
             {
-                playerBullets.create(player.x, player.y - playerBulletYOffset, 'player_bullet');
-                playerBullets.setVelocityY(-playerBulletSpeed - playerSpeed);
+                var playerBullet = playerBullets.create(player.x, player.y - playerBulletYOffset, 'player_bullet');
+                playerBullet.setVelocityY(-playerBulletSpeed - playerSpeed);
                 bulletTimer = playerFireRate;
             }
             else 
             {
                 bulletTimer--;
             }
+            
+            var childCount = 0;
+            playerBullets.children.iterate(function (child) {
+                if (child.y <= 0) 
+                {
+                    child.destroy();
+                }
+            });
 
-            // Player movement by keyboard input
+            // Player movement and animations by keyboard input
             if (keyLeft.isDown)
             {
                 player.setVelocityX(-playerSpeed);
@@ -141,7 +152,7 @@
             {
                 player.setVelocityY(-playerSpeed);
             }
-            if (keyDown.isDown) 
+            else if (keyDown.isDown) 
             {
                 player.setVelocityY(playerSpeed);
             }
