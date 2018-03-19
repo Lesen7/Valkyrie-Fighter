@@ -12,6 +12,7 @@
 
     <script type="text/javascript">
         // Game code starts here
+        
         var config = {
             type: Phaser.AUTO,
             width: 600,
@@ -30,13 +31,16 @@
             }
         };
         
+        // Game variables
         var game = new Phaser.Game(config);
         var gameLevel;
         var gameSpeed;
 
+        // Background/tile variables
         var background;
         var scrollSpeed = 3;
 
+        // Player variables
         var player;
         var playerSpeed = 250;
         var playerBullets;
@@ -45,8 +49,8 @@
         var bulletTimer = 0;
         var playerBulletYOffset = 20;
 
+        // Input variables
         var cursors;
-
         var noKeys;
         var keyShoot;
         var keyLeft;
