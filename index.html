@@ -39,8 +39,10 @@
         var gameSpeed;
 
         // Background/tile variables
-        var background;
-        var scrollSpeed = 3;
+        var background_0;
+        var background_1;
+        var background0ScrollSpeed = 2.8;
+        var background1ScrollSpeed = 3;
 
         // Player variables
         var player;
@@ -62,7 +64,8 @@
 
         function preload () 
         {
-            this.load.image('stars_bg', 'assets/backgrounds/stars_bg.png')
+            this.load.image('stars_bg_0', 'assets/backgrounds/stars_bg_0.png');
+            this.load.image('stars_bg_1', 'assets/backgrounds/stars_bg_1.png');
             this.load.image('player_bullet', 'assets/sprites/vf1/player_bullet.png');
             this.load.spritesheet('vf1_sp', 'assets/sprites/vf1/vf1_sp.png', { frameWidth: 32, frameHeight: 37});
             this.load.spritesheet('vf1_turn_l', 'assets/sprites/vf1/vf1_turn_l.png', { frameWidth: 32, frameHeight: 37});
@@ -78,8 +81,9 @@
             keyUp = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.W);
             keyDown = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.S);
 
-            // Background definition
-            background = this.add.tileSprite(300, 400, 600, 800, 'stars_bg');
+            // Background definitions
+            background_0 = this.add.tileSprite(300, 400, 600, 800, 'stars_bg_0');
+            background_1 = this.add.tileSprite(300, 400, 600, 800, 'stars_bg_1');
 
             // Player inits
             player = this.physics.add.sprite(100, 450, 'vf1_sp');
@@ -115,8 +119,9 @@
 
         function update () 
         {   
-            // Scroll background
-            background.tilePositionY -= scrollSpeed;
+            // Scroll backgrounds
+            background_0.tilePositionY -= background0ScrollSpeed;
+            background_1.tilePositionY -= background1ScrollSpeed;
 
             // Player shooting
             if (keyShoot.isDown && bulletTimer <= 0)
