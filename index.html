@@ -52,6 +52,11 @@
         var playerFireRate = 5;
         var bulletTimer = 0;
         var playerBulletYOffset = 20;
+        
+        // Enemy reguld variables
+        var eRegulds;
+        var eReguldSpeed = 200;
+        var eReguldInterval = 3;
 
         // Input variables
         var noKeys;
@@ -65,10 +70,14 @@
         {
             this.load.image('stars_bg_0', 'assets/backgrounds/stars_bg_0.png');
             this.load.image('stars_bg_1', 'assets/backgrounds/stars_bg_1.png');
+            
             this.load.image('player_bullet', 'assets/sprites/vf1/player_bullet.png');
             this.load.spritesheet('vf1_sp', 'assets/sprites/vf1/vf1_sp.png', { frameWidth: 32, frameHeight: 37});
             this.load.spritesheet('vf1_turn_l', 'assets/sprites/vf1/vf1_turn_l.png', { frameWidth: 32, frameHeight: 37});
             this.load.spritesheet('vf1_turn_r', 'assets/sprites/vf1/vf1_turn_r.png', { frameWidth: 32, frameHeight: 37});
+            
+            this.load.spritesheet('reguld_sp', 'assets/sprites/reguld/reguld_sp.png', { frameWidth: 33, frameHeight: 37});
+            this.load.spritesheet('reguld_move', 'assets/sprites/reguld/reguld_move.png', { frameWidth: 33, frameHeight: 37});
         }
         
         function create () 
@@ -85,10 +94,14 @@
             background_1 = this.add.tileSprite(300, 400, 600, 800, 'stars_bg_1');
 
             // Player inits
-            player = this.physics.add.sprite(100, 450, 'vf1_sp');
+            player = this.physics.add.sprite(300, 750, 'vf1_sp');
             player.setCollideWorldBounds(true);
 
             playerBullets = this.physics.add.group();
+            
+            // Enemy Reguld inits
+            eRegulds = this.physics.add.group();
+            var eReguld = eRegulds.create(300, 300, 'reguld_move');
 
             // Player animations
             this.anims.create({
@@ -108,6 +121,14 @@
             this.anims.create({
                 key: 'turn_r',
                 frames: this.anims.generateFrameNumbers('vf1_turn_r', { start: 0, end: 1 }),
+                frameRate: 10,
+                repeat: -1
+            });
+            
+            // Enemy Reguld animations
+            this.anims.create({
+                key: 'reguld_move',
+                frames: this.anims.generateFrameNumbers('reguld_move', { start: 0, end : 1}),
                 frameRate: 10,
                 repeat: -1
             });
