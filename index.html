@@ -54,7 +54,6 @@
         var playerBulletYOffset = 20;
 
         // Input variables
-        var cursors;
         var noKeys;
         var keyShoot;
         var keyLeft;
@@ -112,9 +111,6 @@
                 frameRate: 10,
                 repeat: -1
             });
-
-            // Keyboard input listener
-            cursors = this.input.keyboard.createCursorKeys();
         }
 
         function update () 
@@ -135,7 +131,6 @@
                 bulletTimer--;
             }
             
-            var childCount = 0;
             playerBullets.children.iterate(function (child) {
                 if (child.y <= 0) 
                 {
@@ -180,6 +175,5 @@
         }
 
     </script>
-    
 </body>
 </html>
