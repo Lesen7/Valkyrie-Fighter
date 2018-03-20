@@ -102,7 +102,6 @@
             // Enemy Reguld inits
             eRegulds = this.physics.add.group();
             var eReguld = eRegulds.create(300, 300, 'reguld_move');
-            eReguld.anims.play('reguld_move', true);
 
             // Player animations
             this.anims.create({
@@ -137,6 +136,9 @@
 
         function update () 
         {   
+            
+            eReguld.anims.play('reguld_move', true);
+            
             // Scroll backgrounds
             background_0.tilePositionY -= background0ScrollSpeed;
             background_1.tilePositionY -= background1ScrollSpeed;
