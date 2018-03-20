@@ -101,8 +101,12 @@
             playerBullets = this.physics.add.group();
             
             // Enemy Reguld inits
-            eRegulds = this.physics.add.group();
-            eReguld = eRegulds.create(300, 300, 'reguld_move');
+            eRegulds = this.physics.add.group({
+                key: 'eReguld'
+            });
+            
+            // Colliders
+            this.physics.add.collider(eRegulds, playerBullets, destroyEnemy(eReguld), null, this);
 
             // Player animations
             this.anims.create({
@@ -197,6 +201,11 @@
             {
                 player.setVelocityX(0);
             }
+        }
+        
+        function destroyEnemy (enemy) 
+        {
+            enemy.Kill();
         }
 
     </script>
