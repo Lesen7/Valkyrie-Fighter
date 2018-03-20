@@ -102,11 +102,13 @@
 
             // Enemy Reguld inits
             eRegulds = this.physics.add.group({
-                key: 'eReguld'
+                key: 'reguld_sp',
+                repeat: 2,
+                setXY: { x: 40, y: 40, stepX: 70 }
             });
 
             // Colliders
-            this.physics.add.collider(eRegulds, playerBullets, destroyEnemy(eReguld), null, this);
+            this.physics.add.collider(eRegulds, playerBullets, destroyEnemy, null, this);
 
             // Player animations
             this.anims.create({
@@ -141,8 +143,10 @@
 
         function update ()
         {
-
-            eReguld.anims.play('reguld_move', true);
+            eRegulds.children.iterate(function(child) 
+            {
+                child.anims.play('reguld_move', true);
+            });
 
             // Scroll backgrounds
             background_0.tilePositionY -= background0ScrollSpeed;
@@ -203,9 +207,9 @@
             }
         }
 
-        function destroyEnemy (enemy)
+        function destroyEnemy (eReguld)
         {
-            enemy.destroy();
+            eReguld.destroy();
         }
 
     </script>
