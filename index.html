@@ -55,6 +55,7 @@
         
         // Enemy reguld variables
         var eRegulds;
+        var eReguld;
         var eReguldSpeed = 200;
         var eReguldInterval = 3;
 
@@ -101,7 +102,7 @@
             
             // Enemy Reguld inits
             eRegulds = this.physics.add.group();
-            var eReguld = eRegulds.create(300, 300, 'reguld_move');
+            eReguld = eRegulds.create(300, 300, 'reguld_move');
 
             // Player animations
             this.anims.create({
