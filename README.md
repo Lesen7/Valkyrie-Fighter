@@ -5,7 +5,7 @@
 * Disparo: Espacio
 <br/>
 <br/>
-### **Información del juego** ###
+### **INFORMACIÓN** ###
 
 
 **Género:** Shmup clásico 
