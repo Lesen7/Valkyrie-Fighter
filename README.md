@@ -3,8 +3,10 @@
 ### **CONTROLES** ###
 * Movimiento: WASD
 * Disparo: Espacio
+
 <br/>
 <br/>
+
 ### **INFORMACIÓN** ###
 
 
