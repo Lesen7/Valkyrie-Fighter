@@ -6,6 +6,8 @@
 <br/>
 <br/>
 ### **Información del juego** ###
+
+
 **Género:** Shmup clásico 
 
 **Estilo visual/artístico:** Pixel art (estilo NES)
