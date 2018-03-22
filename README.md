@@ -1,22 +1,24 @@
 
 ![Macross Logo](/img/macross_logo.png "Logo")
-### **CONTROLES** ###
+## **CONTROLES** ##
 * Movimiento: WASD
 * Disparo: Espacio
 
 <br/>
 <br/>
 
-### **INFORMACIÓN** ###
+## **INFORMACIÓN** ##
 
 
 **Género:** Shmup clásico 
 
 **Estilo visual/artístico:** Pixel art (estilo NES)
 
+**Herramientas:** Phaser.js (versión 3), VS Code, GraphicsGale, GIMP
+
 **Descripción:** Basado en el anime de ciencia ficción SDF Macross. Todos los recursos gráficos han sido creados teniendo como referencia los diseños originales de Macross, y el juego en sí está inspirado en una especie de juego arcade ficticio que existe en la propia serie.
 
-![Caza VF1-A](/img/vf1a.png "Caza VF1-A")
+![VF1-A](/img/vf1a.png "Caza VF1-A")
 
 Controlamos un caza veloz y versátil caza VF1-A y el objetivo es simplemente conseguir la puntuación más alta, interceptando a tantos invasores Zentradi como podamos en un nivel infinito que solo termina cuando morimos. Los enemigos aparecen desde el borde superior a intervalos y posiciones aleatorias. Mientras más alta sea la "fase", más rápido será el scrolling y más enemigos aparecerán (es decir, la dificultad aumentará), pero también otorgaran más puntos al matarlos. Los jugadores pueden elegir en qué fase empezar, y recibirán una bonificación inicial de puntos dependiendo de la fase que elijan. Irán progresando apartir del nivel inicial.
 
@@ -33,3 +35,29 @@ Controlamos un caza veloz y versátil caza VF1-A y el objetivo es simplemente co
 -- Cuando se alcance la puntuación necesaria para un cambio de fase, y no quede ningún enemigo vivo, se mostrará un mensaje en pantalla indicando el cambio y dejarán de aparecer enemigos durante unos segundos para dar tiempo a que el jugador se prepare para la siguiente fase.
 
 **Sistema de puntuaciones:** Al ser destruido, el jugador podrá escribir un nombre para registrar su puntuación en los récords de la página, o usar su nombre de usuario registrado. Las mejores 10 puntuaciones siempre se mostrarán en la página.
+
+### **Enemigos:** ###
+
+![Reguld](/img/reguld.png "Cápsula de combate Reguld")
+
+**Cápsula de combate Reguld de Esbeliben**
+
+![Gnerl](/img/gnerl.png "Cápsula-caza Gnerl")
+
+**Cápsula-caza Gnerl**
+
+![Glaug](/img/glaug.png "Cápsula de combate Glaug")
+
+**Cápsula de combate Glaug de Roiquonmi**
+
+![Glaug-b](/img/glaug_booster.png "Glaug con propulsor auxiliar")
+
+**Cápsula de combate Glaug de Roiquonmi con propulsor auxiliar**
+
+![Ger](/img/ger.png "Traje de combate Nousjadeul-Ger")
+
+**Traje de combate Nousjadeul-Ger de Flemenmik (colores de Bodol)**
+
+![Queadluun-Rau](/img/queadluun_rau.png "Traje de combate Queadluun-Rau")
+
+**Traje de combate Queadluun-Rau de Quimeliquoula (colores de Laplamiz)**
