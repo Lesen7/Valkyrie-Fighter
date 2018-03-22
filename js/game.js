@@ -1,4 +1,4 @@
-// Game code starts here.
+/// <reference path="../phaser/phaser.min.js" />
 
 var config = {
     type: Phaser.AUTO,
@@ -16,9 +16,9 @@ var config = {
         preload: preload,
         create: create,
         update: update
-    },
-    fps: 120
+    }
 };
+
 
 // Game variables
 var game = new Phaser.Game(config);
