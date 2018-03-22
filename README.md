@@ -1,5 +1,5 @@
 
-![alt text](/img/macross_logo.png "Logo Title")
+![Macross Logo](/img/macross_logo.png "Logo")
 ### **CONTROLES** ###
 * Movimiento: WASD
 * Disparo: Espacio
@@ -11,6 +11,8 @@
 **Estilo visual/artístico:** Pixel art (estilo NES)
 
 **Descripción:** Basado en el anime de ciencia ficción SDF Macross. Todos los recursos gráficos han sido creados teniendo como referencia los diseños originales de Macross, y el juego en sí está inspirado en una especie de juego arcade ficticio que existe en la propia serie.
+
+![Caza VF1-A](/img/vf1a.png "Caza VF1-A")
 
 Controlamos un caza veloz y versátil caza VF1-A y el objetivo es simplemente conseguir la puntuación más alta, interceptando a tantos invasores Zentradi como podamos en un nivel infinito que solo termina cuando morimos. Los enemigos aparecen desde el borde superior a intervalos y posiciones aleatorias. Mientras más alta sea la "fase", más rápido será el scrolling y más enemigos aparecerán (es decir, la dificultad aumentará), pero también otorgaran más puntos al matarlos. Los jugadores pueden elegir en qué fase empezar, y recibirán una bonificación inicial de puntos dependiendo de la fase que elijan. Irán progresando apartir del nivel inicial.
 
