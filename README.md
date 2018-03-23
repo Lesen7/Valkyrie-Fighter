@@ -42,22 +42,34 @@ Controlamos un caza veloz y versátil caza VF1-A y el objetivo es simplemente co
 
 **Cápsula de combate Reguld de Esbeliben**
 
+Vehículo de asalto anfibio. Ligero, ágil y armado con cañones láser, operado por un solo piloto. Es fácil de destruir, pero no se debe subestimar.
+
 ![Gnerl](/img/gnerl.png "Cápsula-caza Gnerl")
 
 **Cápsula-caza Gnerl**
+
+Un caza rápido armado con una ametralladora láser de tres cañones y misiles de guiado térmico. Es muy fácil de destruir, pero su armamento es potente.
 
 ![Glaug](/img/glaug.png "Cápsula de combate Glaug")
 
 **Cápsula de combate Glaug de Roiquonmi**
 
+Cápsula pilotada por comandantes de escuadrones de Reguld. Su blindaje y potencia de fuego es superior al de los Reguld, gracias a sus potentes cañones de largo alcance.
+
 ![Glaug-b](/img/glaug_booster.png "Glaug con propulsor auxiliar")
 
 **Cápsula de combate Glaug de Roiquonmi con propulsor auxiliar**
+
+Un Glaug unido a un sistema de propulsión auxiliar que le proporciona mayor velocidad,maniobrabilidad, blindaje y capacidad para disparar misiles de corto alcance.
 
 ![Ger](/img/ger.png "Traje de combate Nousjadeul-Ger")
 
 **Traje de combate Nousjadeul-Ger de Flemenmik (colores de Bodol)**
 
+Traje de asalto para generales de división masculinos. Difícil de destruir gracias a su excepcional blindaje. Su cañón de plasma líquido y subametralladora láser son peligros muy a tener en cuenta.
+
 ![Queadluun-Rau](/img/queadluun_rau.png "Traje de combate Queadluun-Rau")
 
 **Traje de combate Queadluun-Rau de Quimeliquoula (colores de Laplamiz)**
+
+Traje de asalto para generales de división femeninas. Su blindaje es más ligero que el su equivalente masculino, pero lo compensa con una potencia de fuego muy superior, gracias a sus dos cañones de plasma y una ametralladora láser de triple cañón en cada brazo.
