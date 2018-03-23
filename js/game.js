@@ -34,6 +34,7 @@ var background1ScrollSpeed = 0.5;
 // Player variables
 var player;
 var playerSpeed = 250;
+var playerDamage = 10;
 var playerBullets;
 var playerBulletSpeed = 400;
 var playerFireRate = 5;
@@ -43,6 +44,8 @@ var playerBulletYOffset = 20;
 // Enemy reguld variables
 var eRegulds;
 var eReguld;
+var eReguldMaxHealth = 30;
+var eReguldHealth;
 var eReguldSpeed = 200;
 var eReguldInterval = 3;
 
@@ -91,11 +94,17 @@ function create ()
     eRegulds = this.physics.add.group({
         key: 'reguld_sp',
         repeat: 2,
-        setXY: { x: 40, y: 40, stepX: 70 }
+        setXY: { x: 40, y: 300, stepX: 70 },
+        health: 30
     });
 
     // Colliders
-    this.physics.add.collider(eRegulds, playerBullets);
+    this.physics.add.collider(eRegulds, playerBullets, damageEnemy(playerDamage, eRegulds), null, this);
+
+    eRegulds.children.iterate(function(child)
+    {
+        child.health = eRegulds.health;
+    });
 
     // Player animations
     this.anims.create({
@@ -132,7 +141,13 @@ function update ()
 {
     eRegulds.children.iterate(function(child)
     {
+        console.log(child.health);
         child.anims.play('reguld_move', true);
+
+        if (child.health <= 0)
+        {
+          child.destroy();
+        }
     });
 
     // Scroll backgrounds
@@ -154,42 +169,50 @@ function update ()
     playerBullets.children.iterate(function (child) {
         if (child.y <= 0)
         {
-            child.destroy();
+          child.destroy();
         }
     });
 
     // Player movement and animations by keyboard input
     if (keyLeft.isDown)
     {
-        player.setVelocityX(-playerSpeed);
-        player.anims.play('turn_l', true);
+      player.setVelocityX(-playerSpeed);
+      player.anims.play('turn_l', true);
     }
     else if (keyRight.isDown)
     {
-        player.setVelocityX(playerSpeed);
-        player.anims.play('turn_r', true);
+      player.setVelocityX(playerSpeed);
+      player.anims.play('turn_r', true);
     }
     else
     {
-        player.anims.play('thrusters', true);
+      player.anims.play('thrusters', true);
     }
 
     if (keyUp.isDown)
     {
-        player.setVelocityY(-playerSpeed);
+      player.setVelocityY(-playerSpeed);
     }
     else if (keyDown.isDown)
     {
-        player.setVelocityY(playerSpeed);
+      player.setVelocityY(playerSpeed);
     }
 
     if (!keyUp.isDown && !keyDown.isDown)
     {
-        player.setVelocityY(0);
+      player.setVelocityY(0);
     }
 
     if (!keyLeft.isDown && !keyRight.isDown)
     {
-        player.setVelocityX(0);
+      player.setVelocityX(0);
     }
+}
+
+function damageEnemy (damage, enemyGroup)
+{
+  enemyGroup.children.iterate(function(child)
+  {
+    child.health -= damage;
+  });
 }
