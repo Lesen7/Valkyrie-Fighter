@@ -101,10 +101,7 @@ function create ()
     // Colliders
     this.physics.add.collider(eRegulds, playerBullets, damageEnemy(playerDamage, eRegulds), null, this);
 
-    eRegulds.children.iterate(function(child)
-    {
-        child.health = eRegulds.health;
-    });
+    console.log(eRegulds.health);
 
     // Player animations
     this.anims.create({
